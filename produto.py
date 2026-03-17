@@ -4,4 +4,4 @@ class Produto:
         self.nome = nome
         self.preco = preco 
     def __repr__(self):
-        return f"Nome: {self.nome}, preço: {self.preco}, id: {self.id}"
+        return str(f"Nome: {self.nome}, preço: {self.preco}, id: {self.id}")

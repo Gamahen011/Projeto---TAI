@@ -3,9 +3,8 @@ from produto import Produto
 class Administrador:
     def __init__(self, nome):
         self.nome = nome
-
-        
+        self.produtos = []
 
     def cadastrarProduto(self, id, nome, preco):
-        novoProduto = Produto(id, nome, preco)
-        return novoProduto
+        self.produtos.append(Produto(id, nome, preco))
+        

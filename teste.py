@@ -3,17 +3,13 @@ from administrador import Administrador
 
 from flask import Flask
 
-
+adm = Administrador("adm")
 
 app = Flask("meu site")
 @app.route("/teste")
 def teste():
-    produto = Produto(1, "bola", 10)
-    sla = str(produto)
-    return sla
+    return str(adm.cadastrarProduto(1, "Bola", 2))
 app.run()
 
-#adm = Administrador("Adm")
-#print(adm.cadastrarProduto(1, "Bola", 10))
 
 
