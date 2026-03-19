@@ -16,6 +16,13 @@ def post_listarProdutos():
     return str(adm.listarProdutos())
 app.run()
 
+
+@app.route("/postAlt", methods=["POST"])
+def post_alterarProdutos():
+    adm.cadastrarProduto(1, "Bola", 2)
+    return str(adm.alterarProduto(1, "Manga", 10))
+app.run()
+
 '''Post sem json
 app = Flask("meu site")
 @app.route("/post", methods=["POST"])
