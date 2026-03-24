@@ -1,5 +1,5 @@
-from produto import Produto
-from administrador import Administrador
+from Classes.produto import Produto
+from Classes.administrador import Administrador
 
 from flask import Flask
 from flask import request

@@ -1,4 +1,4 @@
-from produto import Produto
+from Classes.produto import Produto
 
 class Administrador:
     def __init__(self, nome):
