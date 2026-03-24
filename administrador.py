@@ -5,16 +5,16 @@ class Administrador:
         self.nome = nome
         self.produtos = []
 
-    def cadastrarProduto(self, id, nome, preco): 
-        self.produtos.append(Produto(id, nome, preco))
-        return Produto(id, nome, preco)
+    def cadastrarProduto(self, nome, preco): 
+        produto = self.produtos.append(Produto(nome, preco))
+        return produto
 
     def alterarProduto(self, id, novonome, novopreco):
         for i in self.produtos:
             if id == i.id:
                 i.nome = novonome
                 i.preco = novopreco
-        return Produto(id, novonome, novopreco)
+                return str(i)
     
     def listarProdutos(self):
         post = ""
