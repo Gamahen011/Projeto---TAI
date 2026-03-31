@@ -2,10 +2,10 @@ from Classes.produto import Produto
 from Classes.administrador import Administrador
 
 class Cliente:
-    def __init__ (self, nome, email, cpf, senha):
+    def __init__ (self, cpf, nome, email, senha):
+        self.cpf = cpf
         self.nome = nome
         self.email = email
-        self.cpf = cpf
         self.senha = senha
         self.carrinho = []
     
