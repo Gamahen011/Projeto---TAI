@@ -43,7 +43,7 @@ def post_deletarProdutos():
         if id < 0 or adm.produtos[id] == None:
             return Response("ID não encontrado", 404)
         adm.deletarProduto(id)
-        return Response("Produto deletada com sucesso", 200)
+        return Response("Produto deletado com sucesso", 200)
     except IndexError:
         return Response("Erro ao deletar produto", 500)
     
@@ -88,17 +88,6 @@ def post_deletarCliente():
     except IndexError:
         return Response("Erro ao deletar cliente", 500)
 
-
-@app.route("/cliente/deletar", methods=["DELETE"])
-def post_deletarCliente():
-    id = request.json["id"]
-    try:
-        if id < 0 or adm.clientes[id] == None:
-            return Response("ID não encontrado", 404)
-        adm.deletarProduto(id)
-        return Response("Produto deletada com sucesso", 200)
-    except IndexError:
-        return Response("Erro ao deletar produto", 500)
     
 app.run(debug=True)
 
