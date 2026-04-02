@@ -17,40 +17,43 @@ class Administrador:
                 i.nome = novonome
                 i.preco = novopreco
                 return True
+        return False
     
     def listarProdutos(self):
-        lista = ""
+        lista = []
         for i in self.produtos:
-            lista += str(i) + ";" + "\n"
+            lista.append(i.to_dict())
         return lista
     
+        
     def deletarProduto(self, id):
         for i in self.produtos:
             if id == i.id:
                 self.produtos.pop(id)
                 return True
     
-    def cadastrarCliente(self, cpf, nome, email, senha): 
-        self.clientes.append(Cliente(cpf, nome, email, senha))
+    def cadastrarCliente(self, nome, email, senha): 
+        self.clientes.append(Cliente(nome, email, senha))
         return True
 
-    def alterarCliente(self, cpf, novonome, novoemail, novasenha):
+    def alterarCliente(self, id, novonome, novoemail, novasenha):
         for i in self.clientes:
-            if cpf == i.cpf:
+            if id == i.id:
                 i.nome = novonome
                 i.email = novoemail
                 i.senha = novasenha
                 return True
     
-    def listarCliente(self):
-        lista = ""
-        for i in self.produtos:
-            listar += str(i) + ";" + "\n"
+    def listarClientes(self):
+        lista = []
+        for i in self.clientes:
+            lista.append(i.to_dict())
         return lista
     
-    def deletarCliente(self, cpf):
+    
+    def deletarCliente(self, id):
         for i in self.clientes:
-            if cpf == i.cpf:
-                self.clientes.remove(cpf)
+            if id == i.id:
+                self.clientes.pop(id)
                 return True
     

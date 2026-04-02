@@ -1,34 +1,40 @@
 from Classes.produto import Produto
+from Classes.cliente import Cliente
 from Classes.administrador import Administrador
 
 from flask import Flask, request, Response, jsonify
 
 adm = Administrador("adm")
 app = Flask("meu site")
-#branch main
+
+
 @app.route("/produto/alterar", methods=["PUT"])
 def post_alterarProdutos():
     id = request.json["id"]
     nome = request.json["nome"]
     preco = request.json["preco"]
     try:
-        produto = adm.alterarProduto(id, nome, preco)
-        return Response("Produto alterado com sucesso", 200)
+        if adm.alterarProduto(id, nome, preco):
+            return Response("Produto alterado com sucesso", 200)
+        else:
+            return Response("Produto não encontrado", 404)
     except IndexError:
         return Response("Erro ao alterar produto", 500)
-
-
+    
 
 @app.route("/produto/listar", methods=["GET"])
 def post_listarProdutos(): 
-    return jsonify(adm.listarProdutos())
+    return jsonify(adm.listarProdutos()), 200
 
 @app.route("/produto/cadastrar", methods=["POST"])
 def post_cadastrarProdutos():
     nome = request.json["nome"]
     preco = request.json["preco"]
-    adm.cadastrarProduto(nome, preco)  
-    #return Response("Produto Cadastrado", 200)
+    try: 
+        adm.cadastrarProduto(nome, preco)  
+        return Response("Produto Cadastrado", 200)
+    except IndexError:
+        return Response("Erro ao cadastrar produto", 500)
 
 @app.route("/produto/deletar", methods=["DELETE"])
 def post_deletarProdutos():
@@ -43,34 +49,46 @@ def post_deletarProdutos():
     
 
 @app.route("/cliente/alterar", methods=["PUT"])
-def post_alterarProdutos():
-    cpf = request.json["cpf"]
+def post_alterarCliente():
+    id = request.json["id"]
     nome = request.json["nome"]
     email = request.json["email"]
     senha = request.json["senha"]
-    cliente = adm.alterarCliente(cpf, nome, email, senha)
-    #return str(cliente)
-
+    try:
+        if adm.alterarCliente(id, nome, email, senha):
+            return Response("Cliente alterado com sucesso", 200)
+        else:
+            return Response("Cliente não encontrado", 404)
+    except IndexError:
+        return Response("Erro ao alterar cliente", 500)
 
 @app.route("/cliente/listar", methods=["GET"])
 def post_listarCliente(): 
-    return str(adm.listarCliente())
+    return jsonify(adm.listarClientes()), 200
 
 @app.route("/cliente/cadastrar", methods=["POST"])
-def post_cadastrarProdutos():
-    cpf = request.json["cpf"]
+def post_cadastrarCliente():
     nome = request.json["nome"]
     email = request.json["email"]
     senha = request.json["senha"]
-    adm.cadastrarProduto(cpf, nome, email, senha)  
-    return "Cadastrado com sucesso"
+    try:
+        adm.cadastrarCliente(nome, email, senha)  
+        return Response("Cliente Cadastrado", 200)
+    except IndexError:
+        return Response("Erro ao cadastrar cliente", 500)
 
-#@app.route("/cliente/deletar", methods=["DELETE"])
-#def post_deletarCliente():
+@app.route("/cliente/deletar", methods=["DELETE"])
+def post_deletarCliente():
+    id = request.json["id"]
+    try:
+        if id < 0 or adm.clientes[id] == None:
+            return Response("ID não encontrado", 404)
+        adm.deletarCliente(id)
+        return Response("Cliente deletado com sucesso", 200)
+    except IndexError:
+        return Response("Erro ao deletar cliente", 500)
+
     
-
-
-
 app.run(debug=True)
 
 '''Post sem json
