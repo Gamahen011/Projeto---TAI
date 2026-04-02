@@ -6,4 +6,11 @@ class Produto:
         self.preco = preco
         Produto.id_contador += 1 
     def __repr__(self):
-        return str(f"Nome: {self.nome}, preço: {self.preco}, id: {self.id}")
+        return str(f"'id': {self.id}, 'nome': {self.nome}, 'preço': {self.preco}")
+    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "nome": self.nome,
+            "preco": self.preco
+        }

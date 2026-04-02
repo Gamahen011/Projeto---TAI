@@ -4,11 +4,9 @@ from Classes.administrador import Administrador
 
 from flask import Flask, request, Response, jsonify
 
-print (0)
-
 adm = Administrador("adm")
 app = Flask("meu site")
-#branch main
+
 
 @app.route("/produto/alterar", methods=["PUT"])
 def post_alterarProdutos():
@@ -16,16 +14,17 @@ def post_alterarProdutos():
     nome = request.json["nome"]
     preco = request.json["preco"]
     try:
-        produto = adm.alterarProduto(id, nome, preco)
-        return Response("Produto alterado com sucesso", 200)
+        if adm.alterarProduto(id, nome, preco):
+            return Response("Produto alterado com sucesso", 200)
+        else:
+            return Response("Produto não encontrado", 404)
     except IndexError:
         return Response("Erro ao alterar produto", 500)
-
-
+    
 
 @app.route("/produto/listar", methods=["GET"])
 def post_listarProdutos(): 
-    return jsonify(adm.listarProdutos())
+    return jsonify(adm.listarProdutos()), 200
 
 @app.route("/produto/cadastrar", methods=["POST"])
 def post_cadastrarProdutos():
@@ -47,7 +46,7 @@ def post_deletarProdutos():
     
 
 @app.route("/cliente/alterar", methods=["PUT"])
-def post_alterarProdutos():
+def post_alterarCliente():
     nome = request.json["nome"]
     email = request.json["email"]
     senha = request.json["senha"]
@@ -60,7 +59,7 @@ def post_listarCliente():
     return str(adm.listarCliente())
 
 @app.route("/cliente/cadastrar", methods=["POST"])
-def post_cadastrarProdutos():
+def post_cadastrarCliente():
     nome = request.json["nome"]
     email = request.json["email"]
     senha = request.json["senha"]

@@ -17,13 +17,15 @@ class Administrador:
                 i.nome = novonome
                 i.preco = novopreco
                 return True
+        return False
     
     def listarProdutos(self):
-        lista = ""
+        lista = []
         for i in self.produtos:
-            lista += str(i) + ";" + "\n"
+            lista.append(i.to_dict())
         return lista
     
+        
     def deletarProduto(self, id):
         for i in self.produtos:
             if id == i.id:
