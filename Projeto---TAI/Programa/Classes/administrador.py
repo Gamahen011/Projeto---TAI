@@ -30,13 +30,13 @@ class Administrador:
                 self.produtos.pop(id)
                 return True
     
-    def cadastrarCliente(self, cpf, nome, email, senha): 
-        self.clientes.append(Cliente(cpf, nome, email, senha))
+    def cadastrarCliente(self, nome, email, senha): 
+        self.clientes.append(Cliente(nome, email, senha))
         return True
 
-    def alterarCliente(self, cpf, novonome, novoemail, novasenha):
+    def alterarCliente(self, novonome, novoemail, novasenha):
         for i in self.clientes:
-            if cpf == i.cpf:
+            if id == i.id:
                 i.nome = novonome
                 i.email = novoemail
                 i.senha = novasenha
@@ -48,9 +48,9 @@ class Administrador:
             listar += str(i) + ";" + "\n"
         return lista
     
-    def deletarCliente(self, cpf):
+    def deletarCliente(self, id):
         for i in self.clientes:
-            if cpf == i.cpf:
-                self.clientes.remove(cpf)
+            if id == i.id:
+                self.clientes.remove(id)
                 return True
     
