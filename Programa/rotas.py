@@ -30,11 +30,16 @@ def post_listarProdutos():
 def post_cadastrarProdutos():
     nome = request.json["nome"]
     preco = request.json["preco"]
+<<<<<<< HEAD:Programa/rotas.py
     try: 
         adm.cadastrarProduto(nome, preco)  
         return Response("Produto Cadastrado", 200)
     except IndexError:
         return Response("Erro ao cadastrar produto", 500)
+=======
+    adm.cadastrarProduto(nome, preco)  
+    return Response("Produto Cadastrado", 200)
+>>>>>>> af1a25be993f91b934b3fba99bdb2e7899832260:Projeto---TAI/Programa/rotas.py
 
 @app.route("/produto/deletar", methods=["DELETE"])
 def post_deletarProdutos():
@@ -50,6 +55,7 @@ def post_deletarProdutos():
 
 @app.route("/cliente/alterar", methods=["PUT"])
 def post_alterarCliente():
+<<<<<<< HEAD:Programa/rotas.py
     id = request.json["id"]
     nome = request.json["nome"]
     email = request.json["email"]
@@ -61,6 +67,14 @@ def post_alterarCliente():
             return Response("Cliente não encontrado", 404)
     except IndexError:
         return Response("Erro ao alterar cliente", 500)
+=======
+    nome = request.json["nome"]
+    email = request.json["email"]
+    senha = request.json["senha"]
+    cliente = adm.alterarCliente(nome, email, senha)
+    return str(cliente)
+
+>>>>>>> af1a25be993f91b934b3fba99bdb2e7899832260:Projeto---TAI/Programa/rotas.py
 
 @app.route("/cliente/listar", methods=["GET"])
 def post_listarCliente(): 
@@ -71,6 +85,7 @@ def post_cadastrarCliente():
     nome = request.json["nome"]
     email = request.json["email"]
     senha = request.json["senha"]
+<<<<<<< HEAD:Programa/rotas.py
     try:
         adm.cadastrarCliente(nome, email, senha)  
         return Response("Cliente Cadastrado", 200)
@@ -88,6 +103,21 @@ def post_deletarCliente():
     except IndexError:
         return Response("Erro ao deletar cliente", 500)
 
+=======
+    adm.cadastrarProduto(nome, email, senha)  
+    return "Cadastrado com sucesso"
+
+@app.route("/cliente/deletar", methods=["DELETE"])
+def post_deletarCliente():
+    id = request.json["id"]
+    try:
+        if id < 0 or adm.clientes[id] == None:
+            return Response("ID não encontrado", 404)
+        adm.deletarProduto(id)
+        return Response("Produto deletada com sucesso", 200)
+    except IndexError:
+        return Response("Erro ao deletar produto", 500)
+>>>>>>> af1a25be993f91b934b3fba99bdb2e7899832260:Projeto---TAI/Programa/rotas.py
     
 app.run(debug=True)
 
