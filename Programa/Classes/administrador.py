@@ -8,7 +8,7 @@ class Administrador:
         self.clientes = []
 
     def cadastrarProduto(self, nome, preco): 
-        self.produtos.append(Produto(nome, preco))
+        self.produtos.append(Produto(nome, preco, self))
         return True
 
     def alterarProduto(self, id, novonome, novopreco):
@@ -25,15 +25,15 @@ class Administrador:
             lista.append(i.to_dict())
         return lista
     
-        
     def deletarProduto(self, id):
         for i in self.produtos:
             if id == i.id:
-                self.produtos.pop(id)
+                self.produtos.remove(i)
                 return True
+        return False
     
     def cadastrarCliente(self, nome, email, senha): 
-        self.clientes.append(Cliente(nome, email, senha))
+        self.clientes.append(Cliente(nome, email, senha, self))
         return True
 
     def alterarCliente(self, id, novonome, novoemail, novasenha):
@@ -43,6 +43,7 @@ class Administrador:
                 i.email = novoemail
                 i.senha = novasenha
                 return True
+        return False
     
     def listarClientes(self):
         lista = []
@@ -50,10 +51,10 @@ class Administrador:
             lista.append(i.to_dict())
         return lista
     
-    
     def deletarCliente(self, id):
         for i in self.clientes:
             if id == i.id:
-                self.clientes.pop(id)
+                self.clientes.remove(i)
                 return True
+        return False
     
