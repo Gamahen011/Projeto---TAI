@@ -7,6 +7,14 @@ from flask import Flask, request, Response, jsonify
 adm = Administrador("Nome do supermercado")
 app = Flask("meu site")
 
+
+@app.after_request
+def after_request(response):
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Methods"] = "GET,PUT,POST,DELETE"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type"
+
+    return response
 @app.route("/produto/alterar", methods=["PUT"])
 def put_alterarProdutos():
     id = request.json["id"]
@@ -132,6 +140,8 @@ def post_finalizarCompra():
     return Response("Cliente não encontrado", 404)
 
 app.run(debug=True)
+app.run(host="0.0.0.0", port=5000)
+
 
 '''Post sem json
 app = Flask("meu site")
