@@ -139,8 +139,7 @@ def post_finalizarCompra():
             return Response(f"Compra finalizada, preço total: {preco}", 200)
     return Response("Cliente não encontrado", 404)
 
-app.run(debug=True)
-app.run(host="0.0.0.0", port=5000)
+app.run(debug=True, host="0.0.0.0", port=5000)
 
 
 '''Post sem json
