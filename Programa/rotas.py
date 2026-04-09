@@ -2,7 +2,7 @@ from Classes.produto import Produto
 from Classes.cliente import Cliente
 from Classes.administrador import Administrador
 
-from flask import Flask, request, Response, jsonify
+from flask import Flask, request, Response, jsonify, redirect, url_for
 
 adm = Administrador("Nome do supermercado")
 app = Flask("meu site")
@@ -15,6 +15,11 @@ def after_request(response):
     response.headers["Access-Control-Allow-Headers"] = "Content-Type"
 
     return response
+
+@app.route("/", methods=["GET"])
+def get_menu():
+    return redirect(url_for("get_listarProdutos"))
+
 @app.route("/produto/alterar", methods=["PUT"])
 def put_alterarProdutos():
     id = request.json["id"]
