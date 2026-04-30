@@ -4,4 +4,4 @@ Extensão utilizada para rotas do flask: Thunder Client.
 
 Ferramenta para rodar programa na web: Render; https://projeto-tai-f19t.onrender.com
 
-Comando para restuarar docker: sudo snap restart docker
+Comando para restaurar docker: sudo snap restart docker
