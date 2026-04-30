@@ -1,0 +1,22 @@
+services:
+  api:
+    build: ./backend
+    expose:
+      - "5000"
+    networks:
+      - appnet
+
+  web:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+    networks:
+      - appnet
+
+networks:
+  appnet:
+    driver: bridge
