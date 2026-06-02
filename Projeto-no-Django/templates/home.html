@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Css/styles.css' %}">
+    <script src="{% static 'Js/scripts.js' %}"></script>
+</head>
+<body>
+    <h1>Seja bem-vindo! Escolha o que deseja fazer:</h1>
+    <ul>
+        <li><a href="{% url 'ler_pagina' 'administrador' %}">CRUD Administradores</a></li>
+        <li><a href="{% url 'ler_pagina' 'produto' %}">CRUD Produtos</a></li>
+        <li><a href="{% url 'ler_pagina' 'cliente' %}">CRUD Clientes</a></li>
+        <li><a href="{% url 'ler_pagina' 'carrinho' %}">CRUD Carrinho</a></li>
+    </ul>
+</body>
+</html>
