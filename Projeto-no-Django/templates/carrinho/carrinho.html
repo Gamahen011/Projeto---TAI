@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD carrinhos</title>
+</head>
+<body>
+    <ul>
+        <li><a href="{% url 'ler_pagina' 'carrinho_criar' %}">Criar carrinho</a></li>
+        <li><a href="{% url 'ler_pagina' 'carrinho_listar' %}">Listar carrinhos</a></li>
+        <li><a href="{% url 'ler_pagina' 'carrinho_atualizar' %}">Atualizar carrinho</a></li>
+        <li><a href="{% url 'ler_pagina' 'carrinho_deletar' %}">Deletar carrinho</a></li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Produtos</title>
+</head>
+<body>
+    <ul>
+        <li><a href="{% url 'ler_pagina' 'produto_criar' %}">Criar Produto</a></li>
+        <li><a href="{% url 'ler_pagina' 'produto_listar' %}">Listar Produtos</a></li>
+        <li><a href="{% url 'ler_pagina' 'produto_atualizar' %}">Atualizar Produto</a></li>
+        <li><a href="{% url 'ler_pagina' 'produto_deletar' %}">Deletar Produto</a></li>
+    </ul>
+</body>
+</html>
