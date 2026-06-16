@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto TAI</title>
+    {% csrf_token %}
+    {% load static %}
+    <script src="{% static 'js/api.js' %}?v=1.12" defer></script>
+    <script>
+        window.csrftoken = '{{ csrf_token }}';
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Projeto TAI</h1>
+        
+        <nav>
+            <ul>
+                <li><button class="navegacao atual" onclick="navegar(event)">Administrador</button></li>
+                <li><button class="navegacao" onclick="navegar(event)">Cliente</button></li>
+                <li><button class="navegacao" onclick="navegar(event)">Produto</button></li>
+                <li><button class="navegacao" onclick="navegar(event)">Carrinho</button></li>
+            </ul>
+        </nav>
+        
+        <div id="div"></div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            carregarDados('administrador');
+        });
+    </script>
+</body>
+</html>
