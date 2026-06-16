@@ -1,0 +1,26 @@
+
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(255, 255, 252);
+}
+
+button {
+    font-size: 1.2vw;  
+    margin-left: 1vw; 
+    border-radius: 0.8vw;
+    background-color: black;
+    color: white;
+    width: 10vw;
+    padding: 1vh;
+    margin-bottom: 1vh;
+}
+
+
+
+ul {
+    list-style-type: none;
+    display: flex;
+    
+}
+

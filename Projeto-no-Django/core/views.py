@@ -72,6 +72,7 @@ def editar(request, categoria, id):
     FormClass = forms[categoria]
     form, dados = normalizacao_form(request, FormClass, objeto=objeto)
     
+    
     if form.is_valid():
         objeto = form.save()
         dados_resposta = model_todict(objeto, campos[categoria])
